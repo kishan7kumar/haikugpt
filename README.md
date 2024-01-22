@@ -18,7 +18,7 @@ A small web app that allows users to get feedback on haikus with AI. The user sh
 
 To run the server, navigate to server/ directory
 
-if running for the first time, install dependencies and <b>*add your OpenAI API key to .env file*<b> [IMPORTANT !!]
+if running for the first time, install dependencies and <b>add your OpenAI API key to .env file</b> [IMPORTANT !!]
 
 ```bash
 npm install
