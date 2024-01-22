@@ -1,11 +1,11 @@
 import { OpenAI } from "openai";
-import * as dotenv from "dotenv";
-dotenv.config();
+import { LLM_API_KEY } from "../config";
+
 
 // Get a haiku from the OpenAI API
 const getHaiku = async () => {
     const chatCompletion = await new OpenAI({
-        apiKey: process.env.LLM_API_KEY, // Your Secret API Key
+        apiKey: LLM_API_KEY, // Your Secret API Key
     }).chat.completions.create({
         messages: [{ role: 'user', content: 'Generate a haiku' }],
         model: 'gpt-3.5-turbo'
@@ -16,7 +16,7 @@ const getHaiku = async () => {
 // Get a review of the haiku from the OpenAI API
 const reviewHaiku = async (userquery: string) => {
     const chatCompletion = await new OpenAI({
-        apiKey: process.env.LLM_API_KEY, // Your Secret API Key
+        apiKey: LLM_API_KEY, // Your Secret API Key
     }).chat.completions.create({
         messages: [{ role: 'user', content: 'Give feedback on this haiku ' + userquery }],
         model: 'gpt-3.5-turbo'
