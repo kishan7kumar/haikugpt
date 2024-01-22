@@ -26,9 +26,9 @@ server will start on port 9000
 
 ### `Backend Tech Stack`
 
-- Node.js: Used for creating the backend server
-- Express.js: Web application framework used for setting up middleware & adding functionality
-- SQLite: A RDBMS database used here for storing user queries
+- Node: Used for creating the backend server, provides hihg scalability and performance
+- Express: Web application framework used for setting up middleware & adding functionality
+- SQLite DB: A RDBMS database used here for storing user queries
 - Http-errors : Used for creating/handling error messages
 - Morgan: Used for logging http requests
 - OpenAI: OpenAI api service used for generating haikus
