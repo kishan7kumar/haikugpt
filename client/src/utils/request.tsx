@@ -1,4 +1,5 @@
 import _ from "lodash";
+import { API_URL } from "./constants";
 
 const request = async <T = any,>(options: RequestInit | undefined) => {
   const fetchOptions = _.merge(
@@ -10,8 +11,7 @@ const request = async <T = any,>(options: RequestInit | undefined) => {
     options
   );
 
-  const backendURL = "http://localhost:9000/haiku";
-  return fetch(backendURL, fetchOptions).then(async (response) => {
+  return fetch(API_URL, fetchOptions).then(async (response) => {
     const body = (await response.json()) as Promise<T>;
 
     if (response.ok) {

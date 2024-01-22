@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Topbar } from "../common/topbar/Topbar";
 import { TextBox } from "../common/textbox/TextBox";
 import { Button } from "../common/button/Button";
@@ -15,6 +15,7 @@ export const Home: React.FC = () => {
   const [value, setValue] = useState<string>("");
   const [cardData, setCardData] = useState<cardData[]>([]);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const chatWindowRef = useRef<HTMLDivElement>(null);
 
   // Handle the change in the text box
   const handleTextBoxInputChange = (
@@ -22,6 +23,14 @@ export const Home: React.FC = () => {
   ) => {
     const val = evt.target?.value;
     setValue(val);
+  };
+
+  // scroll to the bottom of the chat
+  const scrollToBottom = () => {
+    setTimeout(() => {
+      const lastChildElement = chatWindowRef.current?.lastElementChild;
+      lastChildElement?.scrollIntoView({ behavior: "smooth" });
+    }, 0);
   };
 
   // Handle the click of the review/generate button
@@ -57,6 +66,8 @@ export const Home: React.FC = () => {
       ]);
       getHaikuFeedback();
     }
+    // scroll to the bottom of the chat
+    scrollToBottom();
   };
 
   // Get a new haiku from the API
@@ -70,6 +81,7 @@ export const Home: React.FC = () => {
         { type: "bot", response: data.response },
       ]);
       setIsLoaded(false);
+      scrollToBottom();
     } catch (e) {
       console.log(e);
     }
@@ -87,6 +99,7 @@ export const Home: React.FC = () => {
         { type: "bot", response: data.response },
       ]);
       setIsLoaded(false);
+      scrollToBottom();
     } catch (e) {
       console.log(e);
     }
@@ -104,7 +117,10 @@ export const Home: React.FC = () => {
       <div className="lg:max-w-[48rem] h-full mx-auto flex flex-col">
         <Topbar handleNewChatButtonClick={handleNewChatButtonClick} />
         <div className="flex-grow min-h-0 pb-4 pt-8 px-5 lg:px-0">
-          <div className="h-full flex overflow-y-auto flex-col relative">
+          <div
+            ref={chatWindowRef}
+            className="h-full flex overflow-y-auto flex-col relative"
+          >
             {cardData.length > 0 ? (
               cardData.map((card: any, index: number) => {
                 return (
