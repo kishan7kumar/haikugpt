@@ -77,7 +77,19 @@ export const Home: React.FC = () => {
 
   // Get feedback on the haiku from the API
   const getHaikuFeedback = async () => {
-    console.log("feedback");
+    try {
+      const data = await request({
+        method: "POST",
+        body: JSON.stringify({ userquery: value.trim() }),
+      });
+      setCardData((previous: any) => [
+        ...previous,
+        { type: "bot", response: data.response },
+      ]);
+      setIsLoaded(false);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   // Handle the click of the new chat button
