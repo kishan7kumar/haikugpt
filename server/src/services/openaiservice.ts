@@ -10,7 +10,7 @@ const getHaiku = async () => {
         messages: [{ role: 'user', content: 'Generate a haiku' }],
         model: 'gpt-3.5-turbo'
     });
-    return chatCompletion?.choices[0]?.message?.content || "Could not review your haiku now";
+    return chatCompletion?.choices[0]?.message?.content || "Could not get your haiku now";
 };
 
 // Get a review of the haiku from the OpenAI API
