@@ -1,5 +1,6 @@
 import express from "express";
 import createHttpError from "http-errors";
+import haikuRouter from "./routes/haiku";
 import morgan from "morgan";
 import cors from "cors";
 import { Database } from "sqlite3";
@@ -21,6 +22,8 @@ app.use(
     origin: "*",
   })
 );
+
+app.use("/haiku", haikuRouter);
 
 app.use(() => {
   throw createHttpError(404, "Not found");
