@@ -2,6 +2,14 @@
 
 A small web app that allows users to get feedback on haikus with AI. The user should be able to go to the site, enter a haiku, and see a critique response from a large language model. If and only if the user does not submit a haiku, respond with an LLM generated haiku instead.
 
+# HaikuGPT Use Walthrough
+
+1. When you open HaikuGPT Web App you will be prompted with a message screen "Generate a new Haiku or get feedback on your own"
+2. Type your Haiku in the bottom text box and click on review button on the right to see a feedback provided by LLM
+3. If you choose not to type Haiku and click on review button the LLM will generate a Haiku for you
+4. You can choose to start a new conversation by clicking on top right icon button on the topbar, this will clear the current conversation screen
+
+
 # HaikuGPT Server
 
 `server/` contains backend code, that handles REST API based communication between frontend and backend. Backend file structure are organized in the style of monolithic MVC architecture. Default port for server: 9000
