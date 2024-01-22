@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { getHaiku } from "../services/openaiservice";
+import { getHaiku, reviewHaiku } from "../services/openaiservice";
 
 // This function is called when the user hits the /haiku endpoint with a GET request
 export const generateHaiku: RequestHandler = async (req, res, next) => {
